@@ -5,7 +5,7 @@
 Beer.NET
 ========
 
-A [Beer](https://github.com/rauhkrusche/Beer) implemenation for .NET Framework.
+A [Beer](https://github.com/rauhkrusche/Beer) implementation for .NET Framework.
 
 ## Prerequisites ##
 - .NET Framework 2.0 or higher
@@ -26,10 +26,11 @@ Simple example in C#:
 using DerAtrox.BeerNET;
 
 public void BeerTest() {
-	string serialized = Beer.SerializeBeer("Hi");
+	IBeerEncoder encoder = new BeerEx(); // or new Beer()
+	string serialized = encoder.Encode("Hi");
 	// Value: "µµµµµµµµµµµµµµµµ∫BEERBEERBEERBEERBEERBEERBEERBEER∫"
-	
-	string deserialized = Beer.DeserializeBeer("µµµµµµµµµµµµµµµµ∫BEERBEERBEERBEERBEERBEERBEERBEER∫");
+
+	string deserialized = encoder.Decode("µµµµµµµµµµµµµµµµ∫BEERBEERBEERBEERBEERBEERBEERBEER∫");
 	// Value: "Hi"
 }
 ```
